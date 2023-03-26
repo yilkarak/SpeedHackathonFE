@@ -34,7 +34,7 @@ function LoginPage() {
   }
 
   return (
-    <BaseLayout heading="Drivers Portal">
+    <BaseLayout heading="Drivers Portal" footer={true}>
       <div className="center-container">
         <div className="card">
           <h2>Login</h2>

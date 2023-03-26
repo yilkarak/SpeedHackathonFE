@@ -6,7 +6,9 @@ function BaseLayout(props){
         <React.Fragment>
             <NavBar heading={props.heading}/>
                 {props.children}
-            <Footer/>
+            {props.footer &&
+                <Footer/>
+            }
         </React.Fragment>
     )
 }

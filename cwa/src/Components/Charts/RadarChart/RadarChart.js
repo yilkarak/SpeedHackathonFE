@@ -1,8 +1,10 @@
 import React from 'react';
 import { Radar } from 'react-chartjs-2';
-
+import Chart from 'chart.js/auto';
+import {CategoryScale} from 'chart.js'; 
+Chart.register(CategoryScale);
 const data = {
-    labels: ['Frequency of Hard Braking', '', 'Frequency of Seatbelt Usage', 'Frequency of Hard Accessories', 'Label 5', 'Label 6', 'Label 7'],
+    labels: ['Speed', 'RMP', 'Lane Changes', 'Fuel Consumption', 'Time Spent Driving', 'Distance', 'Gear Changes'],
     datasets: [{
         label: 'Personal Statistics',
         data: [65, 59, 90, 81, 56, 55, 40],
@@ -15,7 +17,7 @@ const data = {
         pointHoverBorderColor: 'rgb(255, 99, 132)'
       }, {
         label: 'Avg. Driver Statistics',
-        data: [28, 48, 40, 19, 96, 27, 100],
+        data: [28, 60, 40, 79, 96, 27, 100],
         fill: true,
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgb(54, 162, 235)',
@@ -35,7 +37,7 @@ const data = {
   
   export default function RadarChart(props){
     return(
-        <div style={{ height: '100%', width: '100%'}}>
+        <div>
             <Radar data={data} options={options} />
         </div>
     );

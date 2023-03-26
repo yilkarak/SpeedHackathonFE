@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-
+import Chart from 'chart.js/auto';
+import {CategoryScale} from 'chart.js'; 
+Chart.register(CategoryScale);
 const levels = [
     {
         title: "Level 1: Good Driver",
@@ -20,7 +22,7 @@ const levels = [
 ];
 
 const userData = {
-    points: 299
+    points: 800
 }
 
 export default function LevelProgressChart(){
@@ -78,8 +80,8 @@ export default function LevelProgressChart(){
 
       
     return(
-        <div style={{width: '100%'}}>
-            <h2 style={{width: '100%', textAlign: 'center'}}>
+        <div style={{width: '100%', height:'100%'}}>
+            <h2 style={{ textAlign: 'center'}}>
                 {userProgressData && userProgressData.title}
             </h2>
             <Pie data={data} options={options} />

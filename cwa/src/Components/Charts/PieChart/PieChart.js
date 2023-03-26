@@ -1,5 +1,8 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+import {CategoryScale} from 'chart.js'; 
+Chart.register(CategoryScale);
 const data = {
     labels: ['Slice 1', 'Slice 2', 'Slice 3', 'Slice 4'],
     datasets: [

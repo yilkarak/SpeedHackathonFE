@@ -1,0 +1,55 @@
+.App {
+    text-align: center;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .cars {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 960px;
+  }
+  
+  .car {
+    width: calc(33.33% - 1rem);
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .car img {
+    max-width: 100%;
+  }
+  
+  .car h2 {
+    margin-top: 0;
+  }
+  
+  .car p {
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+  }
+  

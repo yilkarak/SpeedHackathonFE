@@ -12,8 +12,8 @@
   }
   
   .profile-picture {
-    width: 60px;
-    height: 60px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
   }
   
@@ -46,12 +46,9 @@
   }
   
   .profile-level {
-    font-size: 14px;
-    margin-top: 5px;
-    color: #78C8A3;
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 1.125rem;
+    color: #333;
+    width: 50%;
+    margin-top: -3px;
   }
   
