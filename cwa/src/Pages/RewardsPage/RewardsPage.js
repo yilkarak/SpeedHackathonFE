@@ -11,43 +11,7 @@ import RewardsBarChart from '../../Components/Charts/RewardsBarChart/RewardsBarC
 import ProgressBar from './ProgressBar';
 
 import "./RewardsPage.css";
-
-const apiData = {
-    good: [
-        {
-            title: "Frequency of Hard Braking",
-            average: 120,
-            driver: 20,
-            pointsEarned: 200
-        },
-        {
-            title: "Frequency of Seatbel Usage",
-            average: 50,
-            driver: 53,
-            pointsEarned: 200
-        },
-        {
-            title: "Average Time Spent Driving",
-            average: 100,
-            driver: 350,
-            pointsEarned: 200
-        }
-    ],
-    bad: [
-        {
-            title: "Frequency of Hard Acceleration",
-            average: 50,
-            driver: 75,
-            pointsEarned: 0
-        },
-        {
-            title: "Frequency of Sudden Lane Changes",
-            average: 20,
-            driver: 35,
-            pointsEarned: 0
-        }
-    ]
-}
+import { GetPoints } from '../../Hooks/GetPoints';
 
 const levels = [
     {
@@ -67,16 +31,13 @@ const levels = [
     },
 ];
 
-const userData = {
-    points: 800
-}
-
 const RewardsPage = () => {
     const ctx = useContext(CustomerContext);
-
-    //=====
     const [userProgressData, setUserProgressData] = useState(null);
+    const res = GetPoints(ctx.customerId);
+    console.log(res)
     useEffect(() => {
+
         let highestLevelAchieved = {
             title: "Level 0: Beginner",
             threshold: 0,
@@ -84,7 +45,7 @@ const RewardsPage = () => {
         };
         
         levels.forEach(level => {
-            if (userProgressData == null && userData.points >= level.threshold){
+            if (userProgressData == null && res.points >= level.threshold){
                 highestLevelAchieved = level;
             }
         });
@@ -93,11 +54,10 @@ const RewardsPage = () => {
             title: highestLevelAchieved.title,
             threshold: highestLevelAchieved.threshold,
             target: highestLevelAchieved.target,
-            points: userData.points
+            points: res.points
             }
         )
     }, []);
-    //========
 
     return(
         <BaseLayout heading="Rewards">
@@ -120,8 +80,8 @@ const RewardsPage = () => {
                             <div className="factors-list">
                                 <h2>What's going well: </h2>
                                 <ul>
-                                    {
-                                        apiData.good.map((item, index) => {
+                                    {res &&
+                                        res.good.map((item, index) => {
                                             return (
                                                 <li key={`good-item-${index}`}>{item.title}</li>
                                             )
@@ -131,8 +91,8 @@ const RewardsPage = () => {
                             </div>
                         </div>
                         <div className='row mt-3'>
-                            {
-                                apiData.good.map((item, index) => {
+                            {res &&
+                                res.good.map((item, index) => {
                                     return (
                                         <div className="col-sm" key={index}>
                                             <RewardsBarChart chartData={item} goodScore={true} />
@@ -149,8 +109,8 @@ const RewardsPage = () => {
                             <div className="factors-list">
                                 <h2>What's impacting your score: </h2>
                                 <ul>
-                                    {
-                                        apiData.bad.map((item, index) => {
+                                    {res &&
+                                        res.bad.map((item, index) => {
                                             return (
                                                 <li key={`bad-item-${index}`}>{item.title}</li>
                                             )
@@ -160,8 +120,8 @@ const RewardsPage = () => {
                             </div>
                         </div>
                         <div className='row mt-5'>
-                            {
-                                apiData.bad.map((item, index) => {
+                            {res &&
+                                res.bad.map((item, index) => {
                                     return (
                                         <div className="col-sm" key={index}>
                                             <RewardsBarChart chartData={item} goodScore={false} />

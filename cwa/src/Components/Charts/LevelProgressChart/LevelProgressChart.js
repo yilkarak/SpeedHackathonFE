@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import {CategoryScale} from 'chart.js'; 
+import { GetPoints } from '../../../Hooks/GetPoints';
+import CustomerContext from '../../../state/Context';
 Chart.register(CategoryScale);
 const levels = [
     {
@@ -21,13 +23,10 @@ const levels = [
     },
 ];
 
-const userData = {
-    points: 800
-}
-
 export default function LevelProgressChart(){
+    const ctx = useContext(CustomerContext);
     const [userProgressData, setUserProgressData] = useState(null);
-
+    const res = GetPoints(ctx.customerId);
     useEffect(() => {
         let highestLevelAchieved = {
             title: "Level 0: Beginner",
@@ -36,7 +35,7 @@ export default function LevelProgressChart(){
         };
         
         levels.forEach(level => {
-            if (userProgressData == null && userData.points >= level.threshold){
+            if (userProgressData == null && res.points >= level.threshold){
                 highestLevelAchieved = level;
             }
         });
@@ -45,7 +44,7 @@ export default function LevelProgressChart(){
             title: highestLevelAchieved.title,
             threshold: highestLevelAchieved.threshold,
             target: highestLevelAchieved.target,
-            points: userData.points
+            points: res.points
             }
         )
     }, []);
