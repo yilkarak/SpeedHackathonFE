@@ -74,7 +74,7 @@ const Dashboard = () => {
                             <Map />
                         </div>
                     </div>
-                    <div className='row mt-5' style={{color: '#333'}} >
+                    <div className='row mt-5' style={{color: '#333'}} id="upgrades" >
                         <h3 className='mt-2' style={{color:'#333' , width: '100%'}} >
                             Recommended Upgrades
                         </h3>
@@ -102,7 +102,6 @@ const Dashboard = () => {
                                 )
                             })
                         }
-                        <div id="upgrades"></div>
                     </div>
                     <SongPredictions id="songs" />
                     <MaintenancePredictions id="maintenance" />
