@@ -34,29 +34,50 @@ const levels = [
 const RewardsPage = () => {
     const ctx = useContext(CustomerContext);
     const [userProgressData, setUserProgressData] = useState(null);
-    const res = GetPoints(ctx.customerId);
-    console.log(res)
+    const [res, setRes] = useState(null);
+
     useEffect(() => {
 
-        let highestLevelAchieved = {
-            title: "Level 0: Beginner",
-            threshold: 0,
-            target: 350
-        };
-        
-        levels.forEach(level => {
-            if (userProgressData == null && res.points >= level.threshold){
-                highestLevelAchieved = level;
+        fetch('http://localhost:8080/safetyconcerns', {
+            headers: {
+                'Access-Control-Allow-Origin':'*'
             }
-        });
+        }).then((response) => {
+        if (response.ok){
+            response.json().then((data) => {
+                
+                const points = GetPoints(ctx.customerId, data);
+                console.log(points)
+                
+                setRes(points);
 
-        setUserProgressData({
-            title: highestLevelAchieved.title,
-            threshold: highestLevelAchieved.threshold,
-            target: highestLevelAchieved.target,
-            points: res.points
-            }
-        )
+                let highestLevelAchieved = {
+                    title: "Level 0: Beginner",
+                    threshold: 0,
+                    target: 350
+                };
+                
+                levels.forEach(level => {
+                    if (userProgressData == null && points.points >= level.threshold){
+                        highestLevelAchieved = level;
+                    }
+                });
+        
+                setUserProgressData({
+                    title: highestLevelAchieved.title,
+                    threshold: highestLevelAchieved.threshold,
+                    target: highestLevelAchieved.target,
+                    points: points.points
+                    }
+                )
+
+                console.log(userProgressData)
+            })
+        }
+        else{
+            alert("Couldn't Load");
+        }
+        })
     }, []);
 
     return(

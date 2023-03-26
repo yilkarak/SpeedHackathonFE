@@ -1,6 +1,6 @@
-import jsonData from '../data/safetyconcerns.json';
-
-export const GetPoints = (customerId) => {
+export const GetPoints = (customerId, jsonData) => {
+    console.log(customerId)
+    console.log(jsonData)
     let data = {
         good:[],
         bad: [],
@@ -23,18 +23,18 @@ export const GetPoints = (customerId) => {
     let driver_sudden_lane_changes = 0;
 
     jsonData.forEach(item => {
-        total_seatbelt_usage += item['Seatbelt usage'];
-        total_speeding_incidents += item['Speeding incidents'];
-        total_hard_braking += item['Frequency of hard braking'];
-        total_hard_acceleration += item['Frequency of hard acceleration'];
-        total_sudden_lane_changes += item['Frequency of sudden lane changes'];
+        total_seatbelt_usage += item.seatbeltUsage;
+        total_speeding_incidents += item.speedingIncidents;
+        total_hard_braking += item. freqOfHardBraking;
+        total_hard_acceleration += item.freqOfHardAcceleration;
+        total_sudden_lane_changes += item.freqOfSuddenLaneChanges;
 
-        if (item['Customer ID'] == customerId){
-            driver_seatbelt_usage = item['Seatbelt usage'];
-            driver_speeding_incidents = item['Speeding incidents'];
-            driver_hard_braking = item['Frequency of hard braking'];
-            driver_hard_acceleration = item['Frequency of hard acceleration'];
-            driver_sudden_lane_changes = item['Frequency of sudden lane changes'];
+        if (item.customerId== customerId){
+            driver_seatbelt_usage = item.seatbeltUsage;
+            driver_speeding_incidents = item.speedingIncidents;
+            driver_hard_braking = item.freqOfHardBraking;
+            driver_hard_acceleration = item.freqOfHardAcceleration;
+            driver_sudden_lane_changes = item.freqOfSuddenLaneChanges;
         }
     })
 
@@ -114,20 +114,31 @@ export const GetPoints = (customerId) => {
         });
     }
 
-    const driver_points = 
-        (average_seatbelt_usage - driver_seatbelt_usage) +
-        (average_speeding_incidents - driver_speeding_incidents) * 3 +
-        (average_hard_braking - driver_hard_braking) * 3 +
-        (average_hard_acceleration - driver_hard_acceleration) * 2 +
-        (average_sudden_lane_changes - driver_sudden_lane_changes) * 2;
+    let driver_points = 0;
 
-    if (driver_points > 0) {
-        if (driver_points >= 50) {
-            data.points = 350 + Math.min(Math.floor((driver_points - 50) / 2), 350);
-        } else {
-            data.points = Math.floor(driver_points / 2);
-        }
+    if(average_seatbelt_usage < driver_seatbelt_usage){
+        driver_points += 100;
     }
+
+    if(driver_speeding_incidents < average_speeding_incidents){
+        driver_points += 200;
+    }
+
+    if(driver_hard_braking < average_hard_braking){
+        driver_points += 200;
+    }
+
+
+    if(driver_hard_acceleration < average_hard_acceleration){
+        driver_points += 200;
+    }
+
+
+    if(driver_sudden_lane_changes < average_sudden_lane_changes){
+        driver_points += 200;
+    }
+    
+    data.points = driver_points;
 
     return data;
 }

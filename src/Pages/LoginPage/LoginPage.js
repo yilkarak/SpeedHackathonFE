@@ -4,9 +4,6 @@ import * as routes from '../../routes/manifest';
 import BaseLayout from '../../Components/BaseLayout/BaseLayout';
 import './LoginPage.css';
 import CustomerContext from '../../state/Context';
-import { GetLogin } from '../../Hooks/GetLogin';
-
-const API_URL = "http://localhost:3000/";
 
 function LoginPage() {
   const [customerId, setCustomerId] = useState('');
@@ -16,17 +13,36 @@ function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
-    const res = GetLogin(customerId);
-   if (res.login){
-    ctx.setCustomerId(customerId);
-    navigate(routes.Dashboard);
-   }
-   else{
-    setCustomerId('');
-    setError(true);
-   }
+    fetch('http://localhost:8080/safetyconcerns', {
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }
+    }).then((response) => {
+      if (response.ok){
+        response.json().then((data) => {
+          let login = false;
 
+          data.forEach(item => {
+            if (item.customerId == customerId){
+              login = true;
+            }
+          });
+
+          if (login){
+            ctx.setCustomerId(customerId);
+            navigate(routes.Dashboard);
+           }
+           else{
+            setCustomerId('');
+            setError(true);
+           }
+
+        })
+      }
+      else{
+        alert("Couldn't Load");
+      }
+    })
   }
 
   const handleCustomerIdChange = (event) => {
