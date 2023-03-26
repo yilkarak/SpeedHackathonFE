@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/my-app/static/css/main.5d3a6836.css",
-    "main.js": "/my-app/static/js/main.760a43a4.js",
-    "static/js/787.337f5eb3.chunk.js": "/my-app/static/js/787.337f5eb3.chunk.js",
-    "static/media/background.png": "/my-app/static/media/background.866271a92317b7f90f15.png",
-    "static/media/profile.png": "/my-app/static/media/profile.2c5b5671ac6e41f3ef68.png",
-    "static/media/gear.svg": "/my-app/static/media/gear.942ab870d1696e112c8d633c5051699a.svg",
-    "index.html": "/my-app/index.html",
-    "static/media/key.svg": "/my-app/static/media/key.29f7fad9564e0d7c87eb4f0ac9234dc7.svg",
-    "static/media/sensor.svg": "/my-app/static/media/sensor.33e0cb56ad7957669fd4459f4d1ce82f.svg",
-    "static/media/bluetooth.svg": "/my-app/static/media/bluetooth.23fbf461ac67b654a650e65b0558d490.svg",
-    "static/media/music.svg": "/my-app/static/media/music.d59aa8653891eea2608169f913436f6c.svg",
-    "static/media/camera-video.svg": "/my-app/static/media/camera-video.d7109ba460f7f5ccbe304c47ae5d4acf.svg",
-    "static/media/speaker.svg": "/my-app/static/media/speaker.e8545f03cf3b871d4a2cdf2e23294b53.svg",
-    "main.5d3a6836.css.map": "/my-app/static/css/main.5d3a6836.css.map",
-    "main.760a43a4.js.map": "/my-app/static/js/main.760a43a4.js.map",
-    "787.337f5eb3.chunk.js.map": "/my-app/static/js/787.337f5eb3.chunk.js.map"
+    "main.css": "/SpeedHackathonFE/static/css/main.7967714f.css",
+    "main.js": "/SpeedHackathonFE/static/js/main.e75bf4b3.js",
+    "static/js/787.337f5eb3.chunk.js": "/SpeedHackathonFE/static/js/787.337f5eb3.chunk.js",
+    "static/media/background.png": "/SpeedHackathonFE/static/media/background.866271a92317b7f90f15.png",
+    "static/media/profile.png": "/SpeedHackathonFE/static/media/profile.2c5b5671ac6e41f3ef68.png",
+    "static/media/gear.svg": "/SpeedHackathonFE/static/media/gear.942ab870d1696e112c8d633c5051699a.svg",
+    "index.html": "/SpeedHackathonFE/index.html",
+    "static/media/key.svg": "/SpeedHackathonFE/static/media/key.29f7fad9564e0d7c87eb4f0ac9234dc7.svg",
+    "static/media/sensor.svg": "/SpeedHackathonFE/static/media/sensor.33e0cb56ad7957669fd4459f4d1ce82f.svg",
+    "static/media/bluetooth.svg": "/SpeedHackathonFE/static/media/bluetooth.23fbf461ac67b654a650e65b0558d490.svg",
+    "static/media/music.svg": "/SpeedHackathonFE/static/media/music.d59aa8653891eea2608169f913436f6c.svg",
+    "static/media/camera-video.svg": "/SpeedHackathonFE/static/media/camera-video.d7109ba460f7f5ccbe304c47ae5d4acf.svg",
+    "static/media/speaker.svg": "/SpeedHackathonFE/static/media/speaker.e8545f03cf3b871d4a2cdf2e23294b53.svg",
+    "main.7967714f.css.map": "/SpeedHackathonFE/static/css/main.7967714f.css.map",
+    "main.e75bf4b3.js.map": "/SpeedHackathonFE/static/js/main.e75bf4b3.js.map",
+    "787.337f5eb3.chunk.js.map": "/SpeedHackathonFE/static/js/787.337f5eb3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d3a6836.css",
-    "static/js/main.760a43a4.js"
+    "static/css/main.7967714f.css",
+    "static/js/main.e75bf4b3.js"
   ]
 }
